@@ -99,8 +99,13 @@ def recommendation_page():
     st.subheader("Recommended Items:")
     cols = st.columns(5)
     for i, col in enumerate(cols):
-        with col:
-            st.image(resize_image(filenames[indices[i]]))
+        if i < len(indices):  
+                image_path = os.path.join('images', filenames[indices[i]]) 
+                with col:
+                    st.image(resize_image(image_path))
+       # with col:
+           # st.image(resize_image(filenames[indices[i]]))
+            # image_path = os.path.join('images', filenames[indices[i]])
     if st.button("Go Back"):
         st.session_state.page = 'upload'
 
